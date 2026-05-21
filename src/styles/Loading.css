@@ -1,0 +1,175 @@
+.loading-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1F1D1E; /* Keep black/dark for initial steps */
+  color: #EAEAEA;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  user-select: none;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Phase 1: Name typing */
+.intro-name-wrapper {
+  text-align: center;
+}
+
+.intro-name {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  opacity: 0;
+  display: inline-block;
+  white-space: nowrap;
+  border-right: 3px solid var(--accent-color);
+  padding-right: 5px;
+  animation: blink-caret 0.75s step-end infinite;
+  text-shadow: 0 0 20px rgba(218, 192, 157, 0.3);
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #DAC09D }
+}
+
+@media (max-width: 768px) {
+  .intro-name {
+    font-size: 1.8rem;
+    white-space: normal;
+    border-right: none;
+    animation: none;
+    text-align: center;
+    padding: 0 1rem;
+  }
+}
+
+/* Phase 2: Expanding professions */
+.professions-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profession-tag {
+  position: absolute;
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  white-space: nowrap;
+  cursor: default;
+  transition: color 0.3s ease, transform 0.3s ease;
+  user-select: none;
+  filter: blur(4px);
+  opacity: 0;
+}
+
+.profession-tag.center-cluster {
+  filter: blur(0px);
+  opacity: 1;
+  font-size: 2rem;
+}
+
+.profession-tag:hover {
+  color: var(--accent-color);
+  filter: drop-shadow(0 0 10px var(--accent-color));
+}
+
+@media (max-width: 768px) {
+  .profession-tag {
+    font-size: 1.2rem !important;
+  }
+}
+
+/* Phase 3: Explore and Paint Blast */
+.explore-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 10;
+}
+
+.explore-text {
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0;
+  transform: translateY(20px);
+  text-align: center;
+}
+
+.explore-btn {
+  background: transparent;
+  border: 2px solid var(--border-color);
+  color: var(--text-primary);
+  padding: 1rem 2.5rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 40px;
+  cursor: pointer;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 0px var(--pastel-purple-glow);
+  position: relative;
+  overflow: hidden;
+}
+
+.explore-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background-color: var(--pastel-purple);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+  z-index: -1;
+}
+
+.explore-btn:hover {
+  border-color: var(--pastel-purple);
+  color: #1F1D1E;
+  box-shadow: 0 0 25px var(--pastel-purple-glow);
+  transform: scale(1.05);
+}
+
+.explore-btn:hover::after {
+  width: 300px;
+  height: 300px;
+  opacity: 1;
+}
+
+/* Canvas for Paint Blast */
+.paint-blast-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Dissolve wipe out overlay */
+.loading-container.dissolving {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.8s ease-in-out;
+}
