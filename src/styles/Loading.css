@@ -15,79 +15,92 @@
   font-family: 'Outfit', sans-serif;
 }
 
-/* Phase 1: Name typing */
+/* Phase 1: Name typing split lines */
 .intro-name-wrapper {
   text-align: center;
+  max-width: 90%;
 }
 
 .intro-name {
-  font-size: 3.5rem;
-  font-weight: 800;
-  letter-spacing: -0.03em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
   opacity: 0;
-  display: inline-block;
-  white-space: nowrap;
-  border-right: 3px solid var(--accent-color);
-  padding-right: 5px;
-  animation: blink-caret 0.75s step-end infinite;
-  text-shadow: 0 0 20px rgba(218, 192, 157, 0.3);
+  transform: translateY(20px);
 }
 
-@keyframes blink-caret {
-  from, to { border-color: transparent }
-  50% { border-color: #DAC09D }
+.intro-hi {
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+}
+
+.intro-fullname {
+  font-size: 4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(127, 73, 180, 0.4);
 }
 
 @media (max-width: 768px) {
-  .intro-name {
-    font-size: 1.8rem;
-    white-space: normal;
-    border-right: none;
-    animation: none;
-    text-align: center;
-    padding: 0 1rem;
+  .intro-hi {
+    font-size: 1.4rem;
+  }
+  .intro-fullname {
+    font-size: 2rem;
+    line-height: 1.3;
   }
 }
 
-/* Phase 2: Expanding professions */
+/* Phase 2: Splash floating professions */
 .professions-wrapper {
   position: relative;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.profession-tag {
+.splash-tag {
   position: absolute;
-  font-size: 2.2rem;
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-secondary);
+  letter-spacing: 0.08em;
   white-space: nowrap;
-  cursor: default;
-  transition: color 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
   user-select: none;
-  filter: blur(4px);
-  opacity: 0;
+  animation: splash-tag-fade 1.8s ease-in-out forwards;
 }
 
-.profession-tag.center-cluster {
-  filter: blur(0px);
-  opacity: 1;
-  font-size: 2rem;
-}
-
-.profession-tag:hover {
-  color: var(--accent-color);
-  filter: drop-shadow(0 0 10px var(--accent-color));
+@keyframes splash-tag-fade {
+  0% {
+    opacity: 0;
+    filter: blur(8px);
+    transform: translate(-50%, -30%) scale(0.6) rotate(var(--rot, 0deg));
+  }
+  15% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate(-50%, -50%) scale(1) rotate(var(--rot, 0deg));
+  }
+  80% {
+    opacity: 0.95;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translate(-50%, -120%) scale(0.85) rotate(var(--rot, 0deg));
+  }
 }
 
 @media (max-width: 768px) {
-  .profession-tag {
-    font-size: 1.2rem !important;
+  .splash-tag {
+    font-size: 1rem !important;
   }
 }
 

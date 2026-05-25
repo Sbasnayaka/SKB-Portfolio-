@@ -3,7 +3,7 @@ import { projectsData } from '../data/projectsData';
 import ProjectCard from './ProjectCard';
 import ProjectModal from './ProjectModal';
 
-const CATEGORIES = ["All", "Web Applications", "CMS Systems", "UI/UX Designs", "Photography/Videography", "Creative Experiments", "Data & Analysis"];
+const CATEGORIES = ["All", "Web Applications", "Client Projects", "CMS Systems", "UI/UX Designs", "Photography/Videography", "Creative Experiments", "Data & Analysis"];
 
 export default function WorkSection() {
   const [activeCategory, setActiveCategory] = useState("All");

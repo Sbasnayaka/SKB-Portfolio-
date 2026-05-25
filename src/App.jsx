@@ -5,6 +5,7 @@ import Navigation from './components/Navigation';
 import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import WorkSection from './components/WorkSection';
+import AppreciationsSection from './components/AppreciationsSection';
 import ContactSection from './components/ContactSection';
 
 function AppContent() {
@@ -24,6 +25,7 @@ function AppContent() {
           <HeroSection />
           <AboutSection />
           <WorkSection />
+          <AppreciationsSection />
           <ContactSection />
         </main>
 

@@ -33,6 +33,33 @@ export default function AboutSection() {
     'Soft Skills'
   ];
 
+  // Helper to map specific skills to official Devicon icons
+  const getSkillDeviconClass = (name) => {
+    const normalized = name.toLowerCase().trim();
+    if (normalized.includes('react')) return 'devicon-react-original colored';
+    if (normalized.includes('three.js') || normalized.includes('threejs')) return 'devicon-threejs-original colored';
+    if (normalized.includes('node')) return 'devicon-nodejs-plain colored';
+    if (normalized.includes('php')) return 'devicon-php-plain colored';
+    if (normalized.includes('mysql') || normalized.includes('sql')) return 'devicon-mysql-plain colored';
+    if (normalized.includes('mongodb') || normalized.includes('mongo')) return 'devicon-mongodb-plain colored';
+    if (normalized.includes('javascript') || normalized.includes('js')) return 'devicon-javascript-plain colored';
+    if (normalized.includes('java') && !normalized.includes('script')) return 'devicon-java-plain colored';
+    if (normalized.includes('c++')) return 'devicon-cplusplus-plain colored';
+    if (normalized.includes('c#')) return 'devicon-csharp-plain colored';
+    if (normalized === 'c') return 'devicon-c-plain colored';
+    if (normalized.includes('c / c++ / c#')) return 'devicon-cplusplus-plain colored';
+    if (normalized.includes('laravel')) return 'devicon-laravel-original colored';
+    if (normalized.includes('bootstrap')) return 'devicon-bootstrap-plain colored';
+    if (normalized.includes('html')) return 'devicon-html5-plain colored';
+    if (normalized.includes('css')) return 'devicon-css3-plain colored';
+    if (normalized.includes('figma')) return 'devicon-figma-plain colored';
+    if (normalized.includes('git')) return 'devicon-git-plain colored';
+    if (normalized.includes('jira')) return 'devicon-jira-plain colored';
+    if (normalized.includes('wordpress')) return 'devicon-wordpress-plain colored';
+    if (normalized.includes('photoshop')) return 'devicon-photoshop-plain colored';
+    return null;
+  };
+
   // Helper to map category to icon
   const getSkillIcon = (category) => {
     switch (category) {
@@ -194,17 +221,22 @@ export default function AboutSection() {
               // Create unique floating offsets so bubbles animate asynchronously
               const randomDelay = (index * 0.18) % 3.5;
               const randomDuration = 4.5 + (index % 4) * 1.2;
+              const deviconClass = getSkillDeviconClass(skill.name);
 
               return (
                 <div
                   key={index}
                   className="skill-bubble-card"
                   style={{
-                    animationDelay: `-${randomDelay}s`, // Negative delay makes them start animating immediately
+                    animationDelay: `-${randomDelay}s`,
                     animationDuration: `${randomDuration}s`
                   }}
                 >
-                  {getSkillIcon(skill.category)}
+                  {deviconClass ? (
+                    <i className={`${deviconClass} skill-icon`} style={{ fontSize: '18px' }} />
+                  ) : (
+                    getSkillIcon(skill.category)
+                  )}
                   <span>{skill.name}</span>
                 </div>
               );
