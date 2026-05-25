@@ -203,3 +203,8 @@ body.no-scroll {
     padding: 0 1.25rem;
   }
 }
+.no-scroll {
+  overflow: hidden !important;
+  height: 100vh;
+  touch-action: none;
+}
