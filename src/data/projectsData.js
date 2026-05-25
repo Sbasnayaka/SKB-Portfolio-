@@ -49,7 +49,7 @@ export const projectsData = [
     githubUrl: "https://github.com/Sbasnayaka/AI-Tools-Space",
     liveUrl: "https://sbasnayaka.github.io/AI-Tools-Space/",
     badge: "Personal Project",
-    imageUrl: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=600&q=80"
+    imageUrl: "/AI-Tools-Space.png"
   },
 
   // --- Client Projects (Company Works) ---
@@ -210,14 +210,14 @@ export const projectsData = [
     imageUrl: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80"
   },
 
-  // --- CMS Systems (WordPress PDF / Video Previews) ---
+  // --- UI/UX Designs (Including WordPress PDF Previews & Explanations) ---
   {
     id: "wordpress-portfolio-case",
     title: "WordPress Professional Portfolio Project",
-    category: "CMS Systems",
-    subcategory: "WordPress Portfolio",
-    description: "A customized developer portfolio site built in WordPress with Gutenberg components.",
-    details: "Highlights dynamic layout templates, contact panels, and projects catalog pages. Includes a video run-through link.",
+    category: "UI/UX Designs",
+    subcategory: "WordPress Design",
+    description: "Designed entirely in WordPress from scratch without any pre-made templates, built solely with custom plugins and element block layers.",
+    details: "Built completely from the ground up using Elementor and native block structures. Deployed dynamic plugins for interactive filtering and contact fields. Includes a video run-through link.",
     technologies: ["WordPress", "Elementor", "MySQL", "PHP"],
     githubUrl: "#",
     pdfUrl: "/Portfolio-website.pdf",
@@ -229,10 +229,10 @@ export const projectsData = [
   {
     id: "coffee-bean-corner",
     title: "Coffee Bean Corner Website Layout",
-    category: "CMS Systems",
+    category: "UI/UX Designs",
     subcategory: "WordPress Design",
-    description: "A cozy WordPress site design prototype for a coffee roaster, featuring product layouts.",
-    details: "Features PDF previews of Gutenberg grids, organic color systems, and service layouts.",
+    description: "Designed entirely in WordPress from scratch without any pre-made templates, built solely with custom plugins and block layouts.",
+    details: "Features Gutenberg custom blocks, organic color palettes, and responsive service layers. Developed and optimized from scratch using WordPress layout controls without pre-built themes.",
     technologies: ["WordPress", "Figma", "PDF Showcase"],
     githubUrl: "#",
     pdfUrl: "/Coffe Been Corner Website.pdf",
@@ -242,10 +242,10 @@ export const projectsData = [
   {
     id: "sl-institute-lms",
     title: "SL Institute LMS",
-    category: "CMS Systems",
+    category: "UI/UX Designs",
     subcategory: "WordPress LMS",
-    description: "A customized Learning Management System built in WordPress for student course tracking.",
-    details: "Features database class lists, quiz modules, grading widgets, and course outlines.",
+    description: "Designed entirely in WordPress from scratch without any pre-made templates, built solely with custom LMS plugins and database integrations.",
+    details: "Supports dynamic database student rosters, lesson pathways, interactive quizzes, and grading grids. Developed from the ground up utilizing Learndash and customized registration hooks.",
     technologies: ["WordPress", "LMS Plugins", "MySQL"],
     githubUrl: "#",
     pdfUrl: "/SL Institute LMS.pdf",
@@ -255,10 +255,10 @@ export const projectsData = [
   {
     id: "pearl-island-tours",
     title: "The Pearl Island Tours Web UI",
-    category: "CMS Systems",
+    category: "UI/UX Designs",
     subcategory: "WordPress Tour Site",
-    description: "A WordPress travel showcase showcasing tour guides and booking panels.",
-    details: "Includes custom responsive galleries, navigation bars, package widgets, and maps.",
+    description: "Designed entirely in WordPress from scratch without any pre-made templates, built solely with custom booking and gallery plugins.",
+    details: "Integrates tour packaging grids, interactive map blocks, responsive galleries, and contact portals. Custom designed layout styling without pre-made templates.",
     technologies: ["WordPress", "Elementor", "PHP"],
     githubUrl: "#",
     pdfUrl: "/The Pearl Island Tours website.pdf",
@@ -268,10 +268,10 @@ export const projectsData = [
   {
     id: "luxglow-salon",
     title: "LuxGlow - Beauty Salon App Design",
-    category: "CMS Systems",
+    category: "UI/UX Designs",
     subcategory: "WordPress Customization",
-    description: "A gorgeous salon portal designed for client bookings and beauty treatments.",
-    details: "Includes appointment schedules, cosmetologist schedules, services lists, and responsive maps.",
+    description: "Designed entirely in WordPress from scratch without any pre-made templates, built solely with appointment booking and catalog plugins.",
+    details: "Features customer booking slots, stylist profiles, services sheets, and maps. Developed custom grids and templates manually for the beauty salon client project.",
     technologies: ["WordPress", "Elementor", "CSS"],
     githubUrl: "#",
     pdfUrl: "/LuxGlow-Beauty Salon.pdf",
@@ -281,30 +281,15 @@ export const projectsData = [
   {
     id: "arcane-jewel",
     title: "Arcane Jewel E-Commerce Concept",
-    category: "CMS Systems",
+    category: "UI/UX Designs",
     subcategory: "WordPress E-Commerce",
-    description: "A luxury online jewelry storefront with catalog widgets and stateful shopping carts.",
-    details: "Features WooCommerce themes, dark UI gradients, and custom shop displays.",
+    description: "Designed entirely in WordPress from scratch without any pre-made templates, built solely with WooCommerce and product catalog plugins.",
+    details: "A high-end visual showcase for luxury items. Features product detail cards, stateful cart slides, and checkout logic built from scratch with WooCommerce blocks.",
     technologies: ["WordPress", "WooCommerce", "CSS"],
     githubUrl: "#",
     pdfUrl: "/Arcane Jewel.pdf",
     badge: "WordPress Shop Case",
     imageUrl: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80"
-  },
-
-  // --- UI/UX Designs (Other) ---
-  {
-    id: "vunovista-wines",
-    title: "VunoVista Wines Branding Concept",
-    category: "UI/UX Designs",
-    subcategory: "Branding UI",
-    description: "Branding guidelines, catalog cards, and landing page designs for a boutique wine merchant.",
-    details: "Prepared typography, moodboards, color systems, and UI wireframes centered on deep wine-red accent palettes.",
-    technologies: ["Figma", "Branding", "UI Guidelines"],
-    githubUrl: "#",
-    pdfUrl: "/VunoVista Wines.pdf",
-    badge: "Branding UI Design",
-    imageUrl: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80"
   },
 
   // --- Creative Experiments ---
