@@ -60,10 +60,13 @@ export default function ContactSection() {
           </li>
           <li>
             <a 
-              href="mailto:sandunibasnayakawork@gmail.com?subject=Requesting%20Resume" 
+              href="/sanduni_basnayaka_cv.pdf" 
+              download
+              target="_blank"
+              rel="noopener noreferrer"
               className="social-icon"
-              title="Request Resume / CV"
-              aria-label="Request Resume"
+              title="Download Resume / CV"
+              aria-label="Download Resume"
             >
               <FileText size={20} />
             </a>

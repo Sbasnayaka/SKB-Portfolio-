@@ -35,7 +35,7 @@ export const projectsData = [
     liveUrl: "https://sbasnayaka.github.io/EVARA-E-Commerce-Platform/",
     badge: "Individual Coursework",
     grade: "Grade: A",
-    videoUrl: "/src/assets/EVARA.mp4",
+    videoUrl: "https://drive.google.com/file/d/1EirSox45cOoo-64rPMpM2Hqo40965aLG/view?usp=sharing",
     imageUrl: "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=600&q=80"
   },
   {
@@ -220,8 +220,8 @@ export const projectsData = [
     details: "Highlights dynamic layout templates, contact panels, and projects catalog pages. Includes a video run-through link.",
     technologies: ["WordPress", "Elementor", "MySQL", "PHP"],
     githubUrl: "#",
-    pdfUrl: "/src/assets/Portfolio-website.pdf",
-    videoUrl: "/src/assets/WordPress-Portfolio.mp4",
+    pdfUrl: "/Portfolio-website.pdf",
+    videoUrl: "https://drive.google.com/file/d/1GqF4zqw00-3ooWJ1K7WpJzarCdMeNDhK/view?usp=sharing",
     liveUrl: "https://drive.google.com/file/d/1GqF4zqw00-3ooWJ1K7WpJzarCdMeNDhK/view?usp=sharing",
     badge: "WordPress Case Study",
     imageUrl: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=600&q=80"
@@ -235,7 +235,7 @@ export const projectsData = [
     details: "Features PDF previews of Gutenberg grids, organic color systems, and service layouts.",
     technologies: ["WordPress", "Figma", "PDF Showcase"],
     githubUrl: "#",
-    pdfUrl: "/src/assets/Coffe Been Corner Website.pdf",
+    pdfUrl: "/Coffe Been Corner Website.pdf",
     badge: "WordPress PDF Preview",
     imageUrl: "https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?auto=format&fit=crop&w=600&q=80"
   },
@@ -248,7 +248,7 @@ export const projectsData = [
     details: "Features database class lists, quiz modules, grading widgets, and course outlines.",
     technologies: ["WordPress", "LMS Plugins", "MySQL"],
     githubUrl: "#",
-    pdfUrl: "/src/assets/SL Institute LMS.pdf",
+    pdfUrl: "/SL Institute LMS.pdf",
     badge: "WordPress LMS Case",
     imageUrl: "https://images.unsplash.com/photo-1501504905252-473c47e087f8?auto=format&fit=crop&w=600&q=80"
   },
@@ -261,7 +261,7 @@ export const projectsData = [
     details: "Includes custom responsive galleries, navigation bars, package widgets, and maps.",
     technologies: ["WordPress", "Elementor", "PHP"],
     githubUrl: "#",
-    pdfUrl: "/src/assets/The Pearl Island Tours website.pdf",
+    pdfUrl: "/The Pearl Island Tours website.pdf",
     badge: "WordPress Tour Site",
     imageUrl: "https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=600&q=80"
   },
@@ -274,7 +274,7 @@ export const projectsData = [
     details: "Includes appointment schedules, cosmetologist schedules, services lists, and responsive maps.",
     technologies: ["WordPress", "Elementor", "CSS"],
     githubUrl: "#",
-    pdfUrl: "/src/assets/LuxGlow-Beauty Salon.pdf",
+    pdfUrl: "/LuxGlow-Beauty Salon.pdf",
     badge: "WordPress Salon Case",
     imageUrl: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80"
   },
@@ -287,7 +287,7 @@ export const projectsData = [
     details: "Features WooCommerce themes, dark UI gradients, and custom shop displays.",
     technologies: ["WordPress", "WooCommerce", "CSS"],
     githubUrl: "#",
-    pdfUrl: "/src/assets/Arcane Jewel.pdf",
+    pdfUrl: "/Arcane Jewel.pdf",
     badge: "WordPress Shop Case",
     imageUrl: "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=600&q=80"
   },
@@ -302,7 +302,7 @@ export const projectsData = [
     details: "Prepared typography, moodboards, color systems, and UI wireframes centered on deep wine-red accent palettes.",
     technologies: ["Figma", "Branding", "UI Guidelines"],
     githubUrl: "#",
-    pdfUrl: "/src/assets/VunoVista Wines.pdf",
+    pdfUrl: "/VunoVista Wines.pdf",
     badge: "Branding UI Design",
     imageUrl: "https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?auto=format&fit=crop&w=600&q=80"
   },

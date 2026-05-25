@@ -1,23 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Github, ExternalLink, MessageSquare, Send } from 'lucide-react';
-import { getAppreciations, addAppreciation } from '../db/firebase';
-
-const BADGE_OPTIONS = [
-  "✨ Awesome", 
-  "💻 Brilliant Code", 
-  "🎨 Beautiful UI", 
-  "🔥 Creative Tech", 
-  "💡 Inspiring"
-];
+import { X, Github, ExternalLink } from 'lucide-react';
 
 export default function ProjectModal({ project, onClose }) {
-  const [appreciations, setAppreciations] = useState([]);
-  const [name, setName] = useState('');
-  const [message, setMessage] = useState('');
-  const [selectedBadge, setSelectedBadge] = useState(BADGE_OPTIONS[0]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formError, setFormError] = useState('');
-  
   // Photo gallery state
   const [activePhoto, setActivePhoto] = useState(
     project?.photoGallery && project.photoGallery.length > 0 ? project.photoGallery[0] : ''
@@ -34,21 +18,14 @@ export default function ProjectModal({ project, onClose }) {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
-  // Load and listen to appreciations, reset photo gallery when project changes
+  // Reset photo gallery when project changes
   useEffect(() => {
     if (!project) return;
-    
     if (project.photoGallery && project.photoGallery.length > 0) {
       setActivePhoto(project.photoGallery[0]);
     } else {
       setActivePhoto('');
     }
-
-    const unsubscribe = getAppreciations(project.id, (data) => {
-      setAppreciations(data);
-    });
-
-    return () => unsubscribe();
   }, [project]);
 
   // Handle overlay click to close
@@ -58,43 +35,14 @@ export default function ProjectModal({ project, onClose }) {
     }
   };
 
-  // Submit appreciation handler
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!message.trim()) {
-      setFormError('Please enter a feedback message.');
-      return;
+  // Convert Google Drive view URLs to preview format for iframe nesting
+  const getGoogleDriveEmbedUrl = (url) => {
+    if (!url) return '';
+    if (url.includes('drive.google.com')) {
+      // Replaces /view?usp=sharing or similar paths with /preview
+      return url.replace(/\/view(\?.*)?$/, '/preview').replace(/\/edit(\?.*)?$/, '/preview');
     }
-    setFormError('');
-    setIsSubmitting(true);
-
-    try {
-      await addAppreciation(project.id, name || 'Anonymous User', message, selectedBadge);
-      // Reset inputs
-      setName('');
-      setMessage('');
-      setSelectedBadge(BADGE_OPTIONS[0]);
-    } catch (err) {
-      console.error(err);
-      setFormError('Failed to add appreciation. Please try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const formatDate = (isoString) => {
-    try {
-      const date = new Date(isoString);
-      return date.toLocaleDateString(undefined, {
-        month: 'short',
-        day: 'numeric',
-        year: 'numeric',
-        hour: '2-digit',
-        minute: '2-digit'
-      });
-    } catch (e) {
-      return "Just now";
-    }
+    return url;
   };
 
   if (!project) return null;
@@ -126,38 +74,67 @@ export default function ProjectModal({ project, onClose }) {
             )}
             {project.grade && (
               <span className="academic-grade-badge" style={{ marginTop: 0 }}>
-                Grade: {project.grade}
+                {project.grade}
               </span>
             )}
           </div>
         </div>
 
-        {/* Project Video Demo (if exists) */}
+        {/* Project Video Demo (if exists, supporting local or embedded Drive videos) */}
         {project.videoUrl && (
-          <div className="modal-media-container">
-            <video 
-              className="modal-video" 
-              src={project.videoUrl} 
-              controls 
-              autoPlay 
-              muted 
-              playsInline
-            />
+          <div className="modal-media-container" style={{ aspectRatio: '16/9', overflow: 'hidden', borderRadius: '16px', border: '1px solid var(--border-color)', backgroundColor: '#000' }}>
+            {project.videoUrl.includes('drive.google.com') ? (
+              <iframe
+                src={getGoogleDriveEmbedUrl(project.videoUrl)}
+                title={`Video of ${project.title}`}
+                width="100%"
+                height="100%"
+                style={{ border: 'none' }}
+                allow="autoplay; encrypted-media"
+                allowFullScreen
+              />
+            ) : (
+              <video 
+                className="modal-video" 
+                src={project.videoUrl} 
+                controls 
+                autoPlay 
+                muted 
+                playsInline
+                style={{ width: '100%', height: '100%', objectFit: 'contain' }}
+              />
+            )}
           </div>
         )}
 
-        {/* Project PDF presentation attachment (if exists) */}
+        {/* Embedded PDF presentation previewer (if exists) */}
         {project.pdfUrl && (
-          <a 
-            href={project.pdfUrl} 
-            download 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="modal-pdf-link"
-          >
-            <span>📄 View / Download Project PDF ({project.pdfUrl.split('/').pop()})</span>
-            <ExternalLink size={18} />
-          </a>
+          <div className="modal-pdf-container" style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginTop: '0.5rem' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+              <h4 style={{ fontSize: '1rem', fontWeight: '600', fontFamily: 'Outfit', color: 'var(--text-primary)' }}>
+                📄 Project Presentation & Details (PDF Preview)
+              </h4>
+              <a 
+                href={project.pdfUrl} 
+                download 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="modal-link"
+                style={{ fontSize: '0.85rem', textDecoration: 'underline' }}
+              >
+                Download PDF
+              </a>
+            </div>
+            <div style={{ width: '100%', height: '520px', border: '1px solid var(--border-color)', borderRadius: '16px', overflow: 'hidden', backgroundColor: 'var(--bg-card)' }}>
+              <iframe
+                src={`${project.pdfUrl}#toolbar=0`}
+                title={`PDF Preview of ${project.title}`}
+                width="100%"
+                height="100%"
+                style={{ border: 'none' }}
+              />
+            </div>
+          </div>
         )}
 
         {/* Photo Gallery slideshow (if exists) */}
@@ -200,108 +177,11 @@ export default function ProjectModal({ project, onClose }) {
         </div>
 
         {/* Full Details Description */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '1rem' }}>
           <p className="modal-desc" style={{ lineHeight: '1.6' }}>{project.description}</p>
           {project.details && (
             <p className="modal-details" style={{ lineHeight: '1.6', fontSize: '0.95rem' }}>{project.details}</p>
           )}
-        </div>
-
-        {/* Appreciations Board */}
-        <div>
-          <h3 className="modal-section-title">
-            <MessageSquare size={18} /> Appreciations ({appreciations.length})
-          </h3>
-
-          <div className="appreciation-board">
-            
-            {/* Feedback Input Form */}
-            <form className="appreciation-form" onSubmit={handleSubmit}>
-              <h4 style={{ fontSize: '0.95rem', fontWeight: '600', fontFamily: 'Outfit' }}>
-                Explore the project and leave some feedback! ✨
-              </h4>
-
-              {formError && (
-                <div style={{ color: '#ef4444', fontSize: '0.85rem', fontWeight: '500' }}>
-                  {formError}
-                </div>
-              )}
-
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="name">Your Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    className="form-control"
-                    placeholder="Anonymous"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                    maxLength={30}
-                  />
-                </div>
-
-                <div className="form-group">
-                  <label>Select Badge</label>
-                  <div className="badge-selector-flex">
-                    {BADGE_OPTIONS.map((badge, idx) => (
-                      <button
-                        type="button"
-                        key={idx}
-                        className={`badge-option ${selectedBadge === badge ? 'selected' : ''}`}
-                        onClick={() => setSelectedBadge(badge)}
-                      >
-                        {badge}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">Your Message</label>
-                <textarea
-                  id="message"
-                  className="form-control"
-                  rows="3"
-                  placeholder="What did you appreciate about this project?"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  maxLength={250}
-                  required
-                />
-              </div>
-
-              <button type="submit" className="submit-btn" disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : (
-                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', justifyContent: 'center' }}>
-                    Send Appreciation <Send size={14} />
-                  </span>
-                )}
-              </button>
-            </form>
-
-            {/* Comments Feed List */}
-            <div className="appreciations-feed">
-              {appreciations.length === 0 ? (
-                <p style={{ textAlign: 'center', color: 'var(--text-secondary)', fontSize: '0.9rem', padding: '1rem' }}>
-                  No appreciations yet. Be the first to leave one!
-                </p>
-              ) : (
-                appreciations.map((app) => (
-                  <div className="appreciation-card" key={app.id}>
-                    <div className="appreciation-card-header">
-                      <span className="appreciation-sender">{app.name}</span>
-                      <span className="appreciation-badge">{app.badge}</span>
-                    </div>
-                    <p className="appreciation-msg" style={{ fontSize: '0.9rem', margin: '0.2rem 0' }}>{app.message}</p>
-                    <span className="appreciation-time" style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>{formatDate(app.timestamp)}</span>
-                  </div>
-                ))
-              )}
-            </div>
-
-          </div>
         </div>
 
       </div>
