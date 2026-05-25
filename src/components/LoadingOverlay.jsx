@@ -11,7 +11,7 @@ const PROFESSIONS = [
   "Wordpress Developer",
   "AI Prompt Engineer",
   "Content Writer",
-  "Social Media Manager",
+  "Social Media Maintainer",
   "Creative Tech Explorer",
   "Systems Developer",
   "Database Developer",

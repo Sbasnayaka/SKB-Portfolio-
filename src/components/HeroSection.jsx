@@ -333,7 +333,7 @@ export default function HeroSection() {
         <div className="hero-grid">
           {/* Left Column: Text Info */}
           <div className="hero-content">
-            <p className="hero-tagline">Full-Stack Web Developer Intern</p>
+            <p className="hero-tagline">Full-Stack Web Developer </p>
             <h1 className="hero-title">
               <span>Creating digital</span>
               <span className="text-purple-gradient">experiences that</span>

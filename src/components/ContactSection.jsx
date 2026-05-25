@@ -88,7 +88,7 @@ export default function ContactSection() {
 
         {/* Footer credits */}
         <div className="footer-credits">
-          <p>© {currentYear} Sanduni Kaveesha Basnayaka. Built with Vite, React, Vanilla CSS, and Three.js.</p>
+          <p>© {currentYear} Sanduni Kaveesha Basnayaka.</p>
           <p style={{ fontSize: '0.75rem', marginTop: '0.5rem', opacity: 0.6 }}>Designed with a splash of pastel purple and real-time appreciations.</p>
         </div>
 
