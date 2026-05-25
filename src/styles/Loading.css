@@ -4,7 +4,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: #1F1D1E; /* Keep black/dark for initial steps */
+  background-color: #060606; /* Keep black/dark for initial steps */
   color: #EAEAEA;
   z-index: 9999;
   display: flex;

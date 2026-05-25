@@ -3,6 +3,7 @@ import { useTheme } from '../context/ThemeContext';
 import { ArrowDown, ArrowUpRight } from 'lucide-react';
 import * as THREE from 'three';
 import '../styles/Hero.css';
+import profileImg from '../assets/hero-img.png';
 
 export default function HeroSection() {
   const { theme } = useTheme();
@@ -360,7 +361,12 @@ export default function HeroSection() {
           </div>
 
           {/* Right Column: Zero-Gravity Particle field */}
-          <div ref={containerRef} className="hero-canvas-container" />
+          <div className="hero-canvas-container">
+  <div ref={containerRef} className="hero-canvas" />
+  <div className="hero-profile-overlay">
+    <img src={profileImg} alt="Sanduni Basnayaka" />
+  </div>
+</div>
         </div>
       </div>
 
