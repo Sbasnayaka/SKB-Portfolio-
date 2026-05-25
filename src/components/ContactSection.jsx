@@ -25,11 +25,11 @@ export default function ContactSection() {
 
         {/* Big direct email link */}
         <a 
-          href="mailto:sandunibasnayakawork@gmail.com" 
+          href="mailto:sandunibasnayaka01@gmail.com" 
           className="contact-email"
           title="Send me an email"
         >
-          sandunibasnayakawork@gmail.com
+          sandunibasnayaka01@gmail.com
         </a>
 
         {/* Social Links List */}
